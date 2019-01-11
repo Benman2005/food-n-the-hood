@@ -1,32 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,400');
+
 .App {
-  text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+html {
+  background-color: rgb(230, 235, 244);
+  height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+h1 {
+  /* background:#c9ddff; */
+  border-radius: 2px;
+  /* padding: 5px; */
+}
+
+h1,
+#subtitle {
+  text-align: left;
+  margin-left: 40vw;
+  margin-right: 25vw;
+  margin: 10px 25vw 10px 40vw;
+}
+
+#subtitle {
+  color: #212f9e;
+}
+
+#resultsContainer {
+  margin: auto;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* flex: 0 0 80%; */
+}
+
+#results {
+  width: 70%;
+}
+
+.singleResult {
+  /* background: ;  */
+  text-align: left;
+  word-wrap: wrap;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 3px;
+  padding-left: 20px;
+}
+
+.venueLocation p {
+  /* line-height: 14px; */
+  margin: 1px;
+}
+
+.venueLocation {
+  margin-bottom: 10px;
+}
+
+.singleResult,
+h3 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#inputContainer {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+input,
+button,
+  {
+  border-radius: 3px;
+  margin: 1%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+form {
+  width: 50%;
+  display: grid;
+  grid-template: 1fr 1fr 1fr / 30% 70%;
+}
+
+#searchButton {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+label {
+  vertical-align: baseline;
+  line-height: 2.5;
+  text-align: right;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+input {
+  height: 32px;
+  border: none;
+  border-radius: 0;
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+button {
+  background-color: #00112c;
+  font-weight: 600;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  font-size: 14px;
+  font-family: Helvetica;
+  padding: 10px 20px 10px 20px;
 }
