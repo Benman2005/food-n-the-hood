@@ -92,8 +92,8 @@ class LandingPage extends PureComponent {
     console.log(this.state);
     return (
       <div>
-        <h1 id="title">THE FOOD JOINT! </h1>
-        <h4 id="subtitle">Discover food joints in your area!</h4>
+        <h1 id="title">FOOD 'N THE HOOD</h1>
+        <h4 id="subtitle">Discover food.. in your hood!</h4>
         <InputForm onSubmit={this.onSubmit} />
         <div id="resultsContainer">
           <div id="results">
