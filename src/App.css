@@ -18,9 +18,7 @@ h1 {
 h1,
 #subtitle {
   text-align: left;
-  margin-left: 40vw;
-  margin-right: 25vw;
-  margin: 10px 25vw 10px 40vw;
+  margin: 10px 25vw 10px 35vw;
 }
 
 #subtitle {
@@ -81,7 +79,7 @@ button,
 form {
   width: 50%;
   display: grid;
-  grid-template: 1fr 1fr 1fr / 30% 70%;
+  grid-template: 1fr 1fr 1fr / 20% 80%;
 }
 
 #searchButton {
