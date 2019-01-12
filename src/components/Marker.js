@@ -7,7 +7,7 @@ class Marker extends PureComponent {
   render() {
     return (
 
-      <img src={marker} alt = "marker" />
+      <img src={marker} alt = "marker" title={this.props.name} />
     )
   }
 }

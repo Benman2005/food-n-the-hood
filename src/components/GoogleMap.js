@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react";
 import GoogleMapReact from "google-map-react";
 import Marker from "./Marker";
+import HomeMarker from './Home-Marker'
+
 class GoogleMap extends PureComponent {
   // static defaultProps = {
   //   center: {
@@ -16,6 +18,7 @@ class GoogleMap extends PureComponent {
         key={venue.id}
         lat={venue.location.lat}
         lng={venue.location.lng}
+        details={venue}
       />
     );
   };
@@ -30,11 +33,7 @@ class GoogleMap extends PureComponent {
         >
           {this.props.venues &&
             this.props.venues.map(venue => this.renderMarker(venue))}
-          <Marker
-            lat={this.props.lat}
-            lng={this.props.lng}
-            text={"CrackSpot no. 1"}
-          />
+          <HomeMarker lat={this.props.lat} lng={this.props.lng} />
         </GoogleMapReact>
       </div>
     );

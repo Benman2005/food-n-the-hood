@@ -18,6 +18,7 @@ class LandingPage extends PureComponent {
     const { city, query } = data;
     await this.setState({ city, query });
     if (city) {
+      this.getCityCoords(city);
       this.setState({ coordinates: "" });
       this.searchVenues();
     } else {
@@ -27,6 +28,9 @@ class LandingPage extends PureComponent {
 
   // if no location is filled in, we use this function to auto-detect geolocation and search based on coordinates
   getCoordinates = () => {
+    if (this.state.city) {
+      this.getCityCoords(this.state.city);
+    }
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
         const latitude = position.coords.latitude.toFixed(2);
@@ -35,7 +39,7 @@ class LandingPage extends PureComponent {
           coordinates: "&ll=" + latitude + "," + longitude, // '&ll=' stands for 'latitude longitude' and is prepended because it's needed for search (query) by coordinates
           city: "",
           latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
+          longitude: position.coords.longitude
         });
         this.searchVenues();
       });
@@ -44,6 +48,23 @@ class LandingPage extends PureComponent {
         error: "sorry, you don't have geolocation enabled. Please enter a city."
       });
     }
+  };
+
+  getCityCoords = city => {
+    fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?&key=AIzaSyCoPhuanwcuptxhdtQNL7Xn0Osr8uqq-zM&address=${city}`
+    )
+      .then(res => res.json())
+      .then(response => {
+        console.log(response);
+        if (response.status === "OK") {
+          const { lat, lng } = response.results[0].geometry.location;
+          this.setState({ latitude: lat, longitude: lng, error: null });
+        } else
+          this.setState({
+            error: `sorry, we couldn't find coordinates for ${city}`
+          });
+      });
   };
 
   //this is the api request, and translates input values to queries. Resulting errors/venues are put in state to be rendered later.
@@ -99,9 +120,13 @@ class LandingPage extends PureComponent {
         <h1 id="title">FOOD 'N THE HOOD</h1>
         <h4 id="subtitle">Discover food.. in your hood!</h4>
         <InputForm onSubmit={this.onSubmit} />
-        
-        <GoogleMap venues={this.state.venues} lat={this.state.latitude} lng={this.state.longitude}/>
-        
+
+        <GoogleMap
+          venues={this.state.venues}
+          lat={this.state.latitude}
+          lng={this.state.longitude}
+        />
+
         <div id="resultsContainer">
           <div id="results">
             {/* render error if one is present */}
