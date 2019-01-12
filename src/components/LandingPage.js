@@ -1,12 +1,13 @@
 import React, { PureComponent } from "react";
 import InputForm from "./InputForm";
+import GoogleMap from "./GoogleMap";
 
 class LandingPage extends PureComponent {
   state = {
     venues: null,
     error: null,
-    latitude: "",
-    longitude: "",
+    latitude: 52.3475081,
+    longitude: 4.9088069999999995,
     coordinates: "",
     city: "",
     query: ""
@@ -32,7 +33,9 @@ class LandingPage extends PureComponent {
         const longitude = position.coords.longitude.toFixed(2);
         this.setState({
           coordinates: "&ll=" + latitude + "," + longitude, // '&ll=' stands for 'latitude longitude' and is prepended because it's needed for search (query) by coordinates
-          city: ""
+          city: "",
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
         });
         this.searchVenues();
       });
@@ -69,12 +72,13 @@ class LandingPage extends PureComponent {
       .catch(error => console.log(error));
   };
 
-  //this function renders the response array of venues, their name, distance, and location. note: distance is only rendered when exact geocoordinates are passed. 
+  //this function renders the response array of venues, their name, distance, and location. note: distance is only rendered when exact geocoordinates are passed.
   renderVenue = venue => {
     return (
       <div key={venue.id} className="singleResult">
         <h3 className="venueName">
-          {venue.name}  {venue.location.distance &&
+          {venue.name}{" "}
+          {venue.location.distance &&
             "(" +
               (Math.round(venue.location.distance) / 1000).toFixed(1) +
               "km)"}
@@ -95,6 +99,9 @@ class LandingPage extends PureComponent {
         <h1 id="title">FOOD 'N THE HOOD</h1>
         <h4 id="subtitle">Discover food.. in your hood!</h4>
         <InputForm onSubmit={this.onSubmit} />
+        
+        <GoogleMap venues={this.state.venues} lat={this.state.latitude} lng={this.state.longitude}/>
+        
         <div id="resultsContainer">
           <div id="results">
             {/* render error if one is present */}
@@ -104,7 +111,6 @@ class LandingPage extends PureComponent {
             {this.state.venues && this.state.venues.length < 1 && (
               <p>no results in this area :(</p>
             )}
-
             {/* this renders the results through the renderVenues function, sorted by closest distance */}
             {this.state.venues &&
               this.state.venues
