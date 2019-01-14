@@ -8,3 +8,5 @@ To run this app, simply
 - run yarn start
 
 To see a live example go to: https://food-n-the-hood.netlify.com/
+
+If you'd like to see a map with found locations, you can switch to the 'maps' branch.
