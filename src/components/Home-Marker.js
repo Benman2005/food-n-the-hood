@@ -1,17 +1,18 @@
-import React, {
-  PureComponent
-} from 'react'
-import home from '../images/home.png'
-
+import React, { PureComponent } from "react";
+import home from "../images/home.png";
 
 class HomeMarker extends PureComponent {
   render() {
-    console.log(this.props)
+    // const hoverStyle = { border: " 3px solid green" };
+    // const regularStyle = { border: "none" };
+    // const style = this.props.$hover ? hoverStyle : regularStyle;
+    console.log(this.props);
     return (
-
-      <img src={home} alt='home' />
-      )
+      <div >
+        <img src={home} alt="home" />
+      </div>
+    );
   }
 }
 
-export default HomeMarker
+export default HomeMarker;

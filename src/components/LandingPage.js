@@ -49,7 +49,7 @@ class LandingPage extends PureComponent {
       });
     }
   };
-
+  //getting the input(city)'s coordinates to adjust the google map frame
   getCityCoords = city => {
     fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?&key=AIzaSyCoPhuanwcuptxhdtQNL7Xn0Osr8uqq-zM&address=${city}`
