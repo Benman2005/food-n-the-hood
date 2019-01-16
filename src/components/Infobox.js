@@ -4,10 +4,12 @@ class InfoBox extends PureComponent {
   render() {
     const style = {
       backgroundColor: "white",
-      border: "1px solid white",
+      border: "1px solid blue",
+      borderRadius: '5px',
       color: "blue",
-      width: "80px",
-      zIndex: "1000"
+      width: "90px",
+      marginTop: '102%',
+      marginLeft: '100%',
     };
 
     return (

@@ -21,10 +21,11 @@ class GoogleMap extends PureComponent {
           bootstrapURLKeys={{ key: "AIzaSyCoPhuanwcuptxhdtQNL7Xn0Osr8uqq-zM" }}
           center={{ lat: this.props.lat, lng: this.props.lng }}
           defaultZoom={13}
+          hoverDistance={10}
         >
+          <HomeMarker lat={this.props.lat} lng={this.props.lng} />
           {this.props.venues &&
             this.props.venues.map(venue => this.renderMarker(venue))}
-          <HomeMarker lat={this.props.lat} lng={this.props.lng} />
         </GoogleMapReact>
       </div>
     );
