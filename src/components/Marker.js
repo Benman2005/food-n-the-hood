@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import marker from "../images/marker.png";
+// import marker from "../images/marker.png";
 import InfoBox from "./Infobox";
 import { markerStyle, markerStyleHover } from "./markerStyles";
 
