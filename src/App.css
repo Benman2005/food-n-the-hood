@@ -10,7 +10,6 @@ html {
 }
 
 h1 {
-  /* background:#c9ddff; */
   border-radius: 2px;
   /* padding: 5px; */
 }
@@ -25,12 +24,17 @@ h1,
   color: #212f9e;
 }
 
+#googleMap {
+  margin: auto;
+  margin: 10px 25vw 10px 35vw;
+
+}
+
 #resultsContainer {
   margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  /* flex: 0 0 80%; */
 }
 
 #results {
@@ -110,4 +114,9 @@ button {
   font-size: 14px;
   font-family: Helvetica;
   padding: 10px 20px 10px 20px;
+}
+
+.info{
+  background-color: white;
+  
 }
