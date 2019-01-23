@@ -16,7 +16,6 @@ const markerStyle = {
   color: '#3f51b5',
   fontSize: 16,
   fontWeight: 'bold',
-  // padding: 1,
   cursor: 'pointer',
   zIndex: 1
 };
