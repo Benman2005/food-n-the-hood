@@ -18,8 +18,8 @@ class LandingPage extends PureComponent {
     const { city, query } = data;
     await this.setState({ city, query });
     if (city) {
-      this.getCityCoords(city);
-      this.setState({ coordinates: "" });
+      await this.getCityCoords(city);
+      // this.setState({ coordinates: "" });
       this.searchVenues();
     } else {
       this.getCoordinates();
@@ -50,8 +50,8 @@ class LandingPage extends PureComponent {
     }
   };
   //getting the input(city)'s coordinates to adjust the google map frame
-  getCityCoords = city => {
-    fetch(
+  getCityCoords = async city => {
+    await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?&key=AIzaSyCoPhuanwcuptxhdtQNL7Xn0Osr8uqq-zM&address=${city}`
     )
       .then(res => res.json())
@@ -59,7 +59,12 @@ class LandingPage extends PureComponent {
         console.log(response);
         if (response.status === "OK") {
           const { lat, lng } = response.results[0].geometry.location;
-          this.setState({ latitude: lat, longitude: lng, error: null });
+          this.setState({
+            latitude: lat,
+            longitude: lng,
+            error: null,
+            coordinates: "&ll=" + lat.toFixed(2) + "," + lng.toFixed(2)
+          });
         } else
           this.setState({
             error: `sorry, we couldn't find coordinates for ${city}`
@@ -78,7 +83,7 @@ class LandingPage extends PureComponent {
     if (query) {
       query = "&query=" + query;
     }
-    fetch(`${url}${city}${coordinates}${query}`, { method: "GET" })
+    fetch(`${url}${coordinates}${query}`, { method: "GET" })
       .then(res => res.json())
       .then(result => {
         if (result.meta.code === 200) {

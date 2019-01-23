@@ -16,7 +16,7 @@ class GoogleMap extends PureComponent {
   };
   render() {
     return (
-      <div id="googleMap" style={{ height: "30vw", width: "40vw" }}>
+      <div id="googleMap" style={{ height: "40vh", width: "100vw" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyCoPhuanwcuptxhdtQNL7Xn0Osr8uqq-zM" }}
           center={{ lat: this.props.lat, lng: this.props.lng }}

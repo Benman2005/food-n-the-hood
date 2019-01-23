@@ -4,11 +4,8 @@ import InfoBox from "./Infobox";
 import { markerStyle, markerStyleHover } from "./markerStyles";
 
 class Marker extends PureComponent {
+  
   render() {
-    // const style = {
-    //   zIndex: this.props.$hover? "1000" : "1",
-    //   zoom: this.props.$hover? "2" : "1"
-    // }
     const style = this.props.$hover ? markerStyleHover : markerStyle;
     return (
       <div style={style}>
